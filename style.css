@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    background: rgb(5, 5, 15);
+    background: linear-gradient(124deg, rgba(5, 5, 15, 1) 47%, rgba(1, 3, 33, 1) 100%);
+}
+
+.cards {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    perspective: 2500px;
+    padding: 0 36px;
+    margin: 0 50px;
+    position: relative;
+    border-radius: 20px;
+    /* border: 1px solid red; */
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+
+.wrapper {
+    position: absolute;
+    transition: 0.5s all;
+    width: 100%;
+    z-index: -1;
+}
+
+.cards:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    width: 100%;
+    height: 80px;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    transition: 0.5s all;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(to top,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19) 97%);
+}
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(to bottom,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19) 97%);
+}
+
+.cards:hover .wrapper::before,
+.wrapper::after {
+    opacity: 1;
+}
+
+.cards:hover .wrapper::after {
+    height: 120px;
+}
+
+.tittle {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: 0.5s all;
+}
+
+.cards:hover .tittle {
+    transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    transition: 0.5s all;
+    opacity: 0;
+}
+
+.cards:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -50px, 100px);
+}
